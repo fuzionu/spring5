@@ -1,31 +1,16 @@
 apply plugin: 'java'
 
-apply plugin: 'application'
-apply plugin: 'com.github.johnrengelman.shadow'
-
 sourceCompatibility = 11
 targetCompatibility = 11
-mainClassName = 'com.auth0.samples.Main'
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
-    }
-}
-
-shadowJar {
-    mergeServiceFiles()
-}
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.37'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.1.16.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.1.RELEASE'
+}
+
+test {
+    useJUnitPlatform()
 }
